@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="topnav">
-      <div class="logo">LOGO</div>
+      <div class="logo" @click="toggleAsideVisible">LOGO</div>
       <ul class="menu">
         <li>菜单1</li>
         <li>菜单2</li>
@@ -9,6 +9,21 @@
     </div>
   </div>
 </template>
+<script lang="ts">
+import { inject, Ref} from 'vue'
+export default {
+  setup() {
+    const asideVisible = inject<Ref<boolean>>("asideVisible")
+    const toggleAsideVisible = () => {
+      asideVisible.value = !asideVisible.value
+    }
+    return {
+      asideVisible,
+      toggleAsideVisible
+    }
+  }
+}
+</script>
 <style lang="scss" scoped>
 .topnav {
   position: relative;
@@ -19,6 +34,7 @@
   > .logo {
     max-width: 6em;
     margin-right: auto;
+    cursor: pointer;
   }
   > .menu {
     display: flex;
