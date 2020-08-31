@@ -1,0 +1,68 @@
+<template>
+  <button class="po-button" :class="`po-theme-${theme}`">
+    <slot />
+  </button>
+</template>
+<script>
+/***
+ * Vue3属性绑定
+ * 1. 默认所有属性都绑定到根元素
+ * 2. 使用inheritAttrs: false可以取消默认邦迪
+ * 3. 使用$attrs或context.attrs获取所有属性
+ * 4. 使用v-bind="$attrs"批量绑定属性
+ * 5. 使用const {size, ...rest} = context.attrs将属性分开
+ */
+/***
+ * props 与 attrs 的区别
+ * props要先声明才能取值，attrs不用先声明
+ * props不包含事件 attrs包含
+ * props支持string以外的类型 attrs只有string类型
+ * props没有声明的属性，会跑到attrs里
+ */
+export default {
+  // 不继承
+  // inheritAttrs: false
+  props: {
+    theme: {
+      type: String,
+      default: "button",
+    },
+  },
+};
+</script>
+<style lang="scss">
+$h: 32px;
+$border-color: #d9d9d9;
+$color: #333;
+$blue: #40a9ff;
+$radius: 4px;
+.po-button {
+  box-sizing: border-box;
+  height: $h;
+  padding: 0 12px;
+  cursor: pointer;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  white-space: nowrap;
+  background: white;
+  color: $color;
+  border: 1px solid $border-color;
+  border-radius: $radius;
+  box-shadow: 0 1px 0 fade-out(black, 0.95);
+  & + & {
+    margin-left: 8px;
+  }
+  &:hover,
+  &:focus {
+    color: $blue;
+    border-color: $blue;
+  }
+  &:focus {
+    outline: none;
+  }
+  &::-moz-focus-inner {
+    border: 0;
+  }
+}
+</style>

@@ -1,5 +1,5 @@
 <template>
-  <button :class="{ checked: value }" @click="togglecheckedStatus" :style="{'backgroundColor':inactiveColor}">
+  <button class="po-switch" :class="{ 'po-checked': value }" @click="togglecheckedStatus" :style="{'backgroundColor':inactiveColor}">
     <span></span>
   </button>
 </template>
@@ -29,10 +29,10 @@ export default {
   },
 };
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 $h: 20px;
 $h2: $h - 4px;
-button {
+.po-switch {
   height: $h;
   width: $h * 2;
   border: none;
@@ -49,7 +49,7 @@ button {
     border-radius: $h2 / 2;
     transition: left 0.25s;
   }
-  &.checked {
+  &.po-checked {
     background-color: #409eff;
     > span {
       left: calc(100% - #{$h2} - 2px);
