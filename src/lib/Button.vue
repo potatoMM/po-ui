@@ -1,5 +1,5 @@
 <template>
-  <button class="po-button" :class="`po-theme-${theme}`">
+  <button class="po-button" :class="classes">
     <slot />
   </button>
 </template>
@@ -19,6 +19,7 @@
  * props支持string以外的类型 attrs只有string类型
  * props没有声明的属性，会跑到attrs里
  */
+import { computed } from "vue";
 export default {
   // 不继承
   // inheritAttrs: false
@@ -27,7 +28,24 @@ export default {
       type: String,
       default: "button",
     },
+    size:{
+      type:String,
+      default: 'normal'
+    }
   },
+
+  setup(props){
+    const { theme, size } = props;
+    const classes = computed(() => {
+      return {
+        [`po-theme-${theme}`]: theme,
+        [`po-size-${size}`]: size,
+      };
+    });
+    return {
+      classes
+    }
+  }
 };
 </script>
 <style lang="scss">
@@ -64,5 +82,34 @@ $radius: 4px;
   &::-moz-focus-inner {
     border: 0;
   }
+  &.po-theme-link{
+    border-color: transparent;
+    box-shadow: none;
+    color: $blue;
+    &:hover,&:focus{
+      color: lighten($blue, 10%);
+    }
+  }
+  &.po-theme-text{
+    border-color: transparent;
+    box-shadow: none;
+    color: inherit;
+    &:hover,&:focus{
+      background: darken(white, 5%);;
+    }
+  }
+  &.po-theme-button{
+    &.po-size-big{
+      font-size: 24px;
+      height: 48px;
+      padding: 0 16px
+    }
+    &.po-size-small{
+      font-size: 12px;
+      height: 20px;
+      padding: 0 4px;
+    }
+  }
 }
+
 </style>
