@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="topnav">
-      <div class="logo">LOGO</div>
+      <div class="logo">Po UI</div>
       <ul class="menu">
         <li>菜单1</li>
         <li>菜单2</li>
@@ -31,12 +31,13 @@ export default {
   top: 0;
   left: 0;
   width: 100%;
-  background: pink;
-  display: flex;
-  padding: 16px;
+  height: 60px;
+  padding: 10px 20px;
   z-index: 10;
+  display: flex;
   justify-content: center;
   align-items: center;
+  border: 1px solid #eaecef;
   > .logo {
     max-width: 6em;
     margin-right: auto;

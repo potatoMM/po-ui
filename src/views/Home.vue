@@ -2,11 +2,11 @@
   <div>
     <top-nav/>
     <div class="banner">
-      <h1>轱辘UI</h1>
-      <h2>一个厉害的 UI 框架</h2>
+      <h1>Po UI</h1>
+      <h2>一个基于 Vue 3 的 UI 框架</h2>
       <p class="actions">
         <a>GitHub</a>
-        <router-link to="/doc">开始</router-link>
+        <router-link to="/doc">起步</router-link>
       </p>
     </div>
   </div>
@@ -20,24 +20,33 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+$h: 30px;
+$color: #42b983;
 .banner {
-   padding: 100px 0;
    display: flex;
    justify-content: center;
    align-items: center;
    flex-direction: column;
-   background: lightgreen;
+   padding: 100px 0;
+   margin-top: 60px;
    > .actions{
-     padding: 8px 0;
+     padding: 20px 0;
      a {
        margin:0 8px;
        background: #fff;
        display: inline-block;
-       $h: 28px;
-       height: $h;
-       line-height: $h;
-       border-radius: $h/2;
-       padding: 0 8px;
+       line-height: $h + 2;
+       border-radius: $h + 4 / 2;
+       padding: 2px 16px;
+       border: 1px solid $color;
+       &:last-child{
+         color: #fff;
+         background-color: $color;
+       }
+       &:hover{
+         color: #fff;
+         background-color: $color;
+       }
      }
    }
  }

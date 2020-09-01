@@ -1,6 +1,6 @@
 <template>
   <div class="layout">
-    <TopNav class="nav"/>
+    <top-nav class="nav"/>
     <div class="content">
       <aside v-if="asideVisible">
         <h2>组件列表</h2>
@@ -50,7 +50,7 @@ export default {
   > .content {
     flex-grow: 1;
     padding-top: 60px;
-    padding-left: 156px;
+    padding-left: 150px;
     @media (max-width: 500px) {
       padding-left: 0; 
     }
@@ -64,18 +64,17 @@ export default {
   > main {
     flex-grow: 1;
     padding: 16px;
-    background: lightgreen;
   }
 }
 aside {
-  background: lightblue;
-  width: 150px;
-  padding: 16px;
   position: fixed;
   top: 0;
   left: 0;
-  padding-top: 70px;
+  width: 150px;
   height: 100%;
+  padding-top: 60px;
+  background-color: #fff;
+  border: 1px solid #eaecef;
   > h2 {
     margin-bottom: 4px;
   }
