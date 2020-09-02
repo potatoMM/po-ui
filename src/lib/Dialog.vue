@@ -1,23 +1,27 @@
 <template>
 <div v-if="visible">
-  <div class="po-dialog-overlay" @click="onClickOverLay"></div>
-  <div class="po-dialog-wrapper">
-    <div class="po-dialog">
-      <header>
-        <slot name="title"/>
-        <span class="po-dialog-close" @click="close"></span></header>
-      <main>
-        <slot name="content"/>
-      </main>
-      <footer>
-        <Button level="main" @click="ok">OK</Button>
-        <Button @click="cancel">Cancel</Button>
-      </footer>
+  <!--Teleport传送门 请把我传递到body下面-->
+  <Teleport to="body">
+    <div class="po-dialog-overlay" @click="onClickOverLay"></div>
+    <div class="po-dialog-wrapper">
+      <div class="po-dialog">
+        <header>
+          <slot name="title"/>
+          <span class="po-dialog-close" @click="close"></span></header>
+        <main>
+          <slot name="content"/>
+        </main>
+        <footer>
+          <Button level="main" @click="ok">OK</Button>
+          <Button @click="cancel">Cancel</Button>
+        </footer>
+      </div>
     </div>
-  </div>
+  </Teleport>
 </div>
 </template>
 <script>
+import { Teleport } from 'vue'
 import Button from "./Button.vue";
 export default {
   props:{
