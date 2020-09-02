@@ -3,10 +3,11 @@
   <div class="po-dialog-overlay" @click="onClickOverLay"></div>
   <div class="po-dialog-wrapper">
     <div class="po-dialog">
-      <header>标题 <span class="po-dialog-close" @click="close"></span></header>
+      <header>
+        <slot name="title"/>
+        <span class="po-dialog-close" @click="close"></span></header>
       <main>
-        <p>第一行字</p>
-        <p>第二行字</p>
+        <slot name="content"/>
       </main>
       <footer>
         <Button level="main" @click="ok">OK</Button>
@@ -28,6 +29,10 @@ export default {
     closeOnClickOverLay: {
       type:Boolean,
       default:true
+    },
+    title:{
+      type:String,
+      default:"标题"
     },
     ok:{
       type:Function

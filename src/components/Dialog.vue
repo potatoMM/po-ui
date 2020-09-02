@@ -5,8 +5,14 @@
       v-model:visible="dialogVisible" 
       :closeOnClickOverLay="maskClick"
       :ok = "okFn"
-      :cancel = 'cancelFn'
-      />
+      :cancel = 'cancelFn'>
+      <template v-slot:title>
+        this is title
+      </template>
+      <template v-slot:content>
+        this is content
+      </template>
+    </Dialog>
   </div>
 </template>
 <script lang="ts">
