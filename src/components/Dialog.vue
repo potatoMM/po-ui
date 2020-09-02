@@ -1,6 +1,7 @@
 <template>
   <div>
     <Button @click="toggleVisible">toggle</Button>
+    <Button @click="showDialog">show</Button>
     <Dialog 
       v-model:visible="dialogVisible" 
       :closeOnClickOverLay="maskClick"
@@ -19,6 +20,7 @@
 import {ref} from 'vue'
 import Dialog from '../lib/Dialog.vue'
 import Button from '../lib/Button.vue'
+import { openDialog } from '../lib/openDialog'
 export default {
   components:{Dialog, Button},
   setup() {
@@ -34,10 +36,23 @@ export default {
     const cancelFn = () => {
       console.log("this is cancel");
     }
+    const showDialog = () => {
+      openDialog({
+        title:'标题',
+        content:'内容',
+        ok() {
+          console.log("一句话打开dialog的ok方法");
+        },
+        cancel() {
+          console.log("一句话打开dialog的cancel方法");
+        }
+      })
+    }
     return {
       dialogVisible,
       maskClick,
       toggleVisible,
+      showDialog,
       okFn,
       cancelFn
     }
