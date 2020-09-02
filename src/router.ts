@@ -3,6 +3,7 @@ import Home from './views/Home.vue'
 import Doc from './views/Doc.vue'
 import Switch from './components/Switch.vue'
 import Button from './components/Button.vue'
+import Dialog from './components/Dialog.vue'
 
 const history = createWebHashHistory()
 const router = createRouter({
@@ -19,6 +20,9 @@ const router = createRouter({
     },{
       path:'button',
       component:Button
+    },{
+      path:'dialog',
+      component:Dialog
     }]
   }]
 })

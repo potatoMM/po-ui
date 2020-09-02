@@ -3,7 +3,6 @@
     <top-nav class="nav"/>
     <div class="content">
       <aside v-if="asideVisible">
-        <h2>组件列表</h2>
          <ol>
            <li>
              <router-link to="/doc/switch">Switch 组件</router-link>
@@ -11,10 +10,10 @@
            <li>
              <router-link to="/doc/button">Button 组件</router-link>
            </li>
-            <!--<li>
+            <li>
              <router-link to="/doc/dialog">Dialog 组件</router-link>
            </li>
-           <li>
+           <!--<li>
              <router-link to="/doc/tabs">Tabs 组件</router-link>
            </li> -->
          </ol>
@@ -63,7 +62,7 @@ export default {
   }
   > main {
     flex-grow: 1;
-    padding: 16px;
+    padding: 20px;
   }
 }
 aside {
@@ -75,12 +74,10 @@ aside {
   padding-top: 60px;
   background-color: #fff;
   border: 1px solid #eaecef;
-  > h2 {
-    margin-bottom: 4px;
-  }
   > ol {
     > li {
-      padding: 4px 0;
+      padding: 10px 0;
+      text-align: center;
     }
   }
 }
