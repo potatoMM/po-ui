@@ -1,16 +1,16 @@
 <template>
 <div v-if="visible">
-  <div class="po-dialog-overlay"></div>
+  <div class="po-dialog-overlay" @click="onClickOverLay"></div>
   <div class="po-dialog-wrapper">
     <div class="po-dialog">
-      <header>标题 <span class="po-dialog-close"></span></header>
+      <header>标题 <span class="po-dialog-close" @click="close"></span></header>
       <main>
         <p>第一行字</p>
         <p>第二行字</p>
       </main>
       <footer>
-        <Button level="main">OK</Button>
-        <Button>Cancel</Button>
+        <Button level="main" @click="ok">OK</Button>
+        <Button @click="cancel">Cancel</Button>
       </footer>
     </div>
   </div>
@@ -23,12 +23,47 @@ export default {
     visible:{
       type:Boolean,
       default:false
+    },
+    // 点击遮罩层是否关闭
+    closeOnClickOverLay: {
+      type:Boolean,
+      default:true
+    },
+    ok:{
+      type:Function
+    },
+    cancel:{
+      type:Function
     }
   },
   components: {
     Button,
   },
-  setup(props) {},
+  setup(props,context) {
+    const close = () => {
+      context.emit('update:visible', false)
+    }
+    const onClickOverLay = () => {
+      if (props.closeOnClickOverLay) {
+        close()
+      }
+    }
+    const ok = () => {
+      if(props.ok && props.ok() !== false) {
+        close()
+      }
+    }
+    const cancel = () => {
+      context.emit('cancel')
+      close()
+    }
+    return {
+      close,
+      onClickOverLay,
+      ok,
+      cancel
+    }
+  },
 };
 </script>
 <style lang="scss">
