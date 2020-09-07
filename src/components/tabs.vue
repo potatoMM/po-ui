@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Tabs>
+    <Tabs v-model:selected="currentTitle">
       <Tab title="标签一">内容一</Tab>
       <Tab title="标签二">内容二</Tab>
     </Tabs>
@@ -9,9 +9,16 @@
 <script lang='ts'>
 import Tabs from '../lib/Tabs.vue'
 import Tab from '../lib/Tab.vue'
+import { ref } from 'vue'
 export default {
   components:{
     Tabs, Tab
+  },
+  setup () {
+    const currentTitle = ref('标签一')
+    return {
+      currentTitle
+    }
   }
 }
 </script>
