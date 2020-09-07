@@ -1,19 +1,63 @@
 <template>
-  <div>this is tabs </div>
+  <div class="po-tabs">
+    <div class="po-tabs-nav">
+      <div class="po-tabs-nav-item" v-for="(t, index) in titles" :key="index">
+        {{ t }}
+      </div>
+    </div>
+    <div class="po-tabs-content">
+      <component
+        class="po-tabs-content-item"
+        v-for="(c, index) in defaults"
+        :is="c"
+        :key="index"
+      />
+    </div>
+  </div>
 </template>
-<script lang='ts'>
-import Tab from './Tab.vue'
+<script lang="ts">
+import Tab from "./Tab.vue";
 export default {
-  setup (props, context) {
-    const defaults = context.slots.default()
+  setup(props, context) {
+    const defaults = context.slots.default();
     defaults.forEach((tag) => {
       if (tag.type !== Tab) {
-        throw new Error('Tab子标签必须是Tab')
+        throw new Error("Tab子标签必须是Tab");
       }
-    })
+    });
+    const titles = defaults.map((tag) => {
+      return tag.props.title;
+    });
     return {
-      defaults
+      defaults,
+      titles,
+    };
+  },
+};
+</script>
+<style lang="scss">
+$blue: #40a9ff;
+$color: #333;
+$border-color: #d9d9d9;
+.po-tabs {
+  &-nav {
+    display: flex;
+    color: $color;
+    border-bottom: 1px solid $border-color;
+    &-item {
+      padding: 8px 0;
+      margin: 0 16px;
+      cursor: pointer;
+      &:first-child {
+        margin-left: 0;
+      }
+      &.selected {
+        color: $blue;
+      }
     }
   }
+  &-content {
+    padding: 8px 0;
+  }
 }
-</script>
+</style>
