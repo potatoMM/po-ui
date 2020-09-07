@@ -1,7 +1,9 @@
 <template>
   <div>
-    <Tabs/>
-    <Tab/>
+    <Tabs>
+      <Tab title="标签一">内容一</Tab>
+      <Tab title="标签二">内容二</Tab>
+    </Tabs>
   </div>
 </template>
 <script lang='ts'>
