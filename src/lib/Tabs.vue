@@ -1,9 +1,16 @@
 <template>
   <div class="po-tabs">
-    <div class="po-tabs-nav">
-      <div class="po-tabs-nav-item" @click="select(t)" :class="{selected: t=== selected}" v-for="(t, index) in titles" :key="index">
+    <div class="po-tabs-nav" ref="container">
+      <div 
+        class="po-tabs-nav-item" 
+        @click="select(t)" 
+        :class="{selected: t=== selected}" 
+        v-for="(t, index) in titles" :key="index"
+        :ref="el => {if(el) navItems[index] = el}"
+        >
         {{ t }}
       </div>
+      <div class="po-tabs-nav-indicator" ref="indicator"></div>
     </div>
     <div class="po-tabs-content">
       <component
@@ -17,6 +24,7 @@
   </div>
 </template>
 <script lang="ts">
+import { onMounted, onUpdated, reactive, ref } from 'vue';
 import Tab from "./Tab.vue";
 export default {
   props: {
@@ -25,6 +33,24 @@ export default {
     }
   },
   setup(props, context) {
+    const navItems = ref([])
+    const indicator = ref<HTMLDivElement>(null)
+    const container = ref<HTMLDivElement>(null)
+    const changeIndicator = () => {
+      const divs = navItems.value
+      const result = divs.filter(div=>div.classList.contains('selected'))[0]
+      const width = result.getBoundingClientRect().width
+      indicator.value.style.width = width + 'px'
+      const { left:containerLeft } = container.value.getBoundingClientRect()
+      const {left:resultLeft} = result.getBoundingClientRect()
+      console.log(resultLeft);
+      
+      const left = resultLeft - containerLeft
+      indicator.value.style.left = left + 'px'
+    }
+    // 只在第一次渲染执行
+    onMounted(changeIndicator)
+    onUpdated(changeIndicator)
     const defaults = context.slots.default();
     defaults.forEach((tag) => {
       if (tag.type !== Tab) {
@@ -41,12 +67,15 @@ export default {
     const select = (title:string) => {
       context.emit('update:selected', title)
     }
-
     return {
       defaults,
       titles,
       current,
-      select
+      select,
+      navItems,
+      indicator,
+      container,
+      changeIndicator
     };
   },
 };
@@ -57,6 +86,7 @@ $color: #333;
 $border-color: #d9d9d9;
 .po-tabs {
   &-nav {
+    position: relative;
     display: flex;
     color: $color;
     border-bottom: 1px solid $border-color;
@@ -70,6 +100,15 @@ $border-color: #d9d9d9;
       &.selected {
         color: $blue;
       }
+    }
+    &-indicator {
+      position: absolute;
+      height: 3px;
+      background: $blue;
+      left: 0;
+      bottom: -1px;
+      width: 100px;
+      transition: all 250ms;
     }
   }
   &-content {

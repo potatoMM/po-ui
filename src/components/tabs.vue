@@ -15,7 +15,7 @@ export default {
     Tabs, Tab
   },
   setup () {
-    const currentTitle = ref('标签一')
+    const currentTitle = ref('标签二')
     return {
       currentTitle
     }
