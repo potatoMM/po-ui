@@ -6,7 +6,7 @@
         @click="select(t)" 
         :class="{selected: t=== selected}" 
         v-for="(t, index) in titles" :key="index"
-        :ref="el => {if(el) navItems[index] = el}"
+        :ref="el => {if (t===selected) selectedItem = el}"
         >
         {{ t }}
       </div>
@@ -33,17 +33,14 @@ export default {
     }
   },
   setup(props, context) {
-    const navItems = ref([])
+    const selectedItem = ref < HTMLDivElement > (null)
     const indicator = ref<HTMLDivElement>(null)
     const container = ref<HTMLDivElement>(null)
     const changeIndicator = () => {
-      const divs = navItems.value
-      const result = divs.filter(div=>div.classList.contains('selected'))[0]
-      const width = result.getBoundingClientRect().width
+      const width = selectedItem.value.getBoundingClientRect().width
       indicator.value.style.width = width + 'px'
       const { left:containerLeft } = container.value.getBoundingClientRect()
-      const {left:resultLeft} = result.getBoundingClientRect()
-      console.log(resultLeft);
+      const {left:resultLeft} = selectedItem.value.getBoundingClientRect()
       
       const left = resultLeft - containerLeft
       indicator.value.style.left = left + 'px'
@@ -51,6 +48,7 @@ export default {
     // 只在第一次渲染执行
     onMounted(changeIndicator)
     onUpdated(changeIndicator)
+    
     const defaults = context.slots.default();
     defaults.forEach((tag) => {
       if (tag.type !== Tab) {
@@ -60,9 +58,6 @@ export default {
     const titles = defaults.map((tag) => {
       return tag.props.title;
     });
-    const current = defaults.filter(tag => {
-      return tag.props.title === props.selected
-    })[0]
 
     const select = (title:string) => {
       context.emit('update:selected', title)
@@ -70,9 +65,8 @@ export default {
     return {
       defaults,
       titles,
-      current,
       select,
-      navItems,
+      selectedItem,
       indicator,
       container,
       changeIndicator
