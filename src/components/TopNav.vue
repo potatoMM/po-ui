@@ -1,13 +1,15 @@
 <template>
-  <div>
-    <div class="topnav">
-      <div class="logo">Po UI</div>
-      <ul class="menu">
-        <li>菜单1</li>
-        <li>菜单2</li>
-      </ul>
-      <span class="toggle-aside" @click="toggleAsideVisible"></span>
+  <div class="topnav">
+    <div class="logo">
+      <svg class="icon" >
+        <use xlink:href="#icon-tudou"></use>
+      </svg>
     </div>
+    <ul class="menu">
+      <li>菜单1</li>
+      <li>菜单2</li>
+    </ul>
+    <span class="toggle-aside" @click="toggleAsideVisible"></span>
   </div>
 </template>
 <script lang="ts">
@@ -42,6 +44,10 @@ export default {
     max-width: 6em;
     margin-right: auto;
     cursor: pointer;
+    svg{
+      width: 32px;
+      height: 32px;
+    }
   }
   > .menu {
     display: flex;

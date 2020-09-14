@@ -1,5 +1,6 @@
 <template>
-  <div>
+<div>
+  <div class="topnav-and-banner">
     <top-nav/>
     <div class="banner">
       <h1>Po UI</h1>
@@ -10,6 +11,18 @@
       </p>
     </div>
   </div>
+  <div class="features">
+    <svg class="icon" >
+        <use xlink:href="#icon-Vue"></use>
+      </svg>
+      <svg class="icon" >
+        <use xlink:href="#icon-typescript"></use>
+      </svg>
+      <svg class="icon" >
+        <use xlink:href="#icon-deng"></use>
+      </svg>
+  </div>
+</div>
 </template>
 <script lang='ts'>
 import TopNav from '../components/TopNav.vue'
@@ -22,6 +35,10 @@ export default {
 <style lang="scss" scoped>
 $h: 30px;
 $color: #42b983;
+$green:#02bcb0;
+.topnav-and-banner{
+  background: linear-gradient(145deg, rgba(227, 255, 253, 1) 0%, rgba(183, 233, 230, 1) 100%);
+}
 .banner {
    display: flex;
    justify-content: center;
@@ -33,19 +50,16 @@ $color: #42b983;
      padding: 20px 0;
      a {
        margin:0 8px;
-       background: #fff;
+       background: $green;
        display: inline-block;
-       line-height: $h + 2;
-       border-radius: $h + 4 / 2;
-       padding: 2px 16px;
-       border: 1px solid $color;
-       &:last-child{
-         color: #fff;
-         background-color: $color;
-       }
+       border-radius: 4px;
+       padding: 8px 24px;
+       border: 1px solid $green;
+       color: #fff;
        &:hover{
          color: #fff;
          background-color: $color;
+         text-decoration: none;
        }
      }
    }
