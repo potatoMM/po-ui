@@ -6,8 +6,9 @@
       </svg>
     </div>
     <ul class="menu">
-      <li>菜单1</li>
-      <li>菜单2</li>
+      <li>
+        <router-link to="/doc">文档</router-link>
+      </li>
     </ul>
     <span class="toggle-aside" @click="toggleAsideVisible"></span>
   </div>
@@ -39,7 +40,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid #eaecef;
+  // border: 1px solid #eaecef;
   > .logo {
     max-width: 6em;
     margin-right: auto;
