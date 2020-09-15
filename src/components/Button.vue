@@ -1,15 +1,15 @@
 <template>
   <div>
     <div>
-      <Button>this is button</Button>
-      <Button theme="button">this is button</Button>
-      <Button theme="link">this is button</Button>
-      <Button theme="text">this is button</Button>
+      <Button>按钮</Button>
+      <Button theme="button">按钮</Button>
+      <Button theme="link">链接按钮</Button>
+      <Button theme="text">文本按钮</Button>
     </div>
-    <div>
-      <Button size="big"> big button</Button>
-      <Button>normal</Button>
-      <Button size="small">small button</Button>
+    <div class="mr20">
+      <Button size="big">大尺寸按钮</Button>
+      <Button>普通尺寸按钮</Button>
+      <Button size="small">小尺寸按钮</Button>
     </div>
   </div>
 </template>
@@ -21,3 +21,8 @@ export default {
   setup() {},
 };
 </script>
+<style lang="scss" scoped>
+.mr20{
+  margin-top:20px;
+}
+</style>

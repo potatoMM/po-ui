@@ -70,11 +70,6 @@ $green:#02bcb0;
        padding: 8px 24px;
        border: 1px solid $green;
        color: #fff;
-       &:hover{
-         color: #fff;
-         background-color: $color;
-         text-decoration: none;
-       }
      }
    }
  }

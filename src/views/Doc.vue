@@ -1,6 +1,6 @@
 <template>
   <div class="layout">
-    <top-nav class="nav"/>
+    <top-nav class="nav" toggleMenuButtonVisible/>
     <div class="content">
       <aside v-if="asideVisible">
          <ol>
@@ -59,6 +59,7 @@ export default {
   display: flex;
   > aside {
     flex-shrink: 0;
+    z-index: 100;
   }
   > main {
     flex-grow: 1;
@@ -74,6 +75,7 @@ aside {
   padding-top: 60px;
   background-color: #fff;
   border: 1px solid #eaecef;
+  background-color: fff;
   > ol {
     > li {
       padding: 10px 0;
