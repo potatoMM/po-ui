@@ -87,8 +87,17 @@ aside {
   background-color: fff;
   > ol {
     > li {
-      padding: 10px 0;
-      text-align: center;
+      >a{
+        display: block;
+        padding: 10px 0;
+        text-decoration: none;
+        text-align: center;
+      }
+      .router-link-active{
+        background: rgb(64, 169, 255);;
+        text-decoration: none;
+        color: #fff;
+      }
     }
   }
 }
