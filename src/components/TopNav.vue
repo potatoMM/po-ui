@@ -4,6 +4,7 @@
       <svg class="icon" >
         <use xlink:href="#icon-tudou"></use>
       </svg>
+      Po UI
     </router-link>
     <ul class="menu">
       <li>
