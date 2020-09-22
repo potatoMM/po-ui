@@ -3,6 +3,12 @@
     <top-nav class="nav" toggleMenuButtonVisible/>
     <div class="content">
       <aside v-if="asideVisible">
+        <h2>文档</h2>
+        <ol>
+            <li><router-link to="/doc/intro">介绍</router-link></li>
+            <li><router-link to="/doc/install">安装</router-link></li>
+            <li><router-link to="/doc/get-started">开始使用</router-link></li>
+        </ol>
          <ol>
            <li>
              <router-link to="/doc/switch">Switch 组件</router-link>
@@ -58,6 +64,9 @@ export default {
 .content {
   display: flex;
   > aside {
+    h2{
+      text-align: center;
+    }
     flex-shrink: 0;
     z-index: 100;
   }
