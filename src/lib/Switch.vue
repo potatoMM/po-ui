@@ -14,7 +14,6 @@ export default {
     inactiveColor:{
       type:String,
       required: false,
-      default:'#dcdfe6'
     },
   },
   setup(props, context) {
