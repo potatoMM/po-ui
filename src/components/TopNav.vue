@@ -50,6 +50,7 @@ export default {
   justify-content: center;
   align-items: center;
   // border: 1px solid #eaecef;
+  background: #fff;
   > .logo {
     max-width: 6em;
     margin-right: auto;
