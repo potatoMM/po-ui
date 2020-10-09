@@ -20,9 +20,10 @@
    </div>
  </template>
  <script>
- import {Button, Tabs, Switch, Dialog} from "king-ui"
+ import {Button, Tabs, Switch, Dialog} from "po-ui"
  export default {
    components: {Button}
  }
  </script>
  ```
+  下一节：[Switch开关](#/doc/switch)
