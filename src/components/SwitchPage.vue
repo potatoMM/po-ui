@@ -22,8 +22,8 @@
 <script lang="ts">
 import Demo from '../components/Demo.vue'
 import SwitchDemo from '../components/switchs/SwitchDemo.vue'
-import SwitchInactiveColorDemo from '../components/SwitchInactiveColorDemo.vue'
-import SwitchDisabledDemo from '../components/SwitchDisabledDemo.vue'
+import SwitchInactiveColorDemo from '../components/switchs/SwitchInactiveColorDemo.vue'
+import SwitchDisabledDemo from '../components/switchs/SwitchDisabledDemo.vue'
 export default {
   components: {Demo},
   setup () {

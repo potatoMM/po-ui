@@ -28,18 +28,18 @@ export default {
       type: String,
       default: "button",
     },
-    size:{
-      type:String,
-      default: 'normal'
-    },
-    level:{
+    size: {
       type: String,
-      default:'normal'
-    }
+      default: "normal",
+    },
+    level: {
+      type: String,
+      default: "normal",
+    },
   },
 
-  setup(props){
-    const { theme, size, level } = props;
+  setup(props) {
+    const { theme, size, level, type } = props;
     const classes = computed(() => {
       return {
         [`po-theme-${theme}`]: theme,
@@ -48,9 +48,9 @@ export default {
       };
     });
     return {
-      classes
-    }
-  }
+      classes,
+    };
+  },
 };
 </script>
 <style lang="scss">
@@ -60,6 +60,7 @@ $color: #333;
 $blue: #40a9ff;
 $radius: 4px;
 $red: red;
+$white: #fff;
 .po-button {
   box-sizing: border-box;
   height: $h;
@@ -88,81 +89,86 @@ $red: red;
   &::-moz-focus-inner {
     border: 0;
   }
-  &.po-theme-link{
+  &.po-theme-link {
     border-color: transparent;
     box-shadow: none;
     color: $blue;
-    &:hover,&:focus{
+    &:hover,
+    &:focus {
       color: lighten($blue, 10%);
     }
   }
-  &.po-theme-text{
+  &.po-theme-text {
     border-color: transparent;
     box-shadow: none;
     color: inherit;
-    &:hover,&:focus{
-      background: darken(white, 5%);;
+    &:hover,
+    &:focus {
+      background: darken(white, 5%);
     }
   }
-  &.po-theme-button{
-    &.po-size-big{
+  &.po-theme-button {
+    &.po-size-big {
       font-size: 24px;
       height: 48px;
-      padding: 0 16px
+      padding: 0 16px;
     }
-    &.po-size-small{
+    &.po-size-small {
       font-size: 12px;
       height: 20px;
       padding: 0 4px;
     }
     &.po-theme-button {
-    &.po-level-main {
-      background: $blue;
-      color: white;
-      border-color: $blue;
-      &:hover,
-      &:focus {
-        background: darken($blue, 10%);
-        border-color: darken($blue, 10%);
+      &.po-level-main {
+        background: $blue;
+        color: white;
+        border-color: $blue;
+        &:hover,
+        &:focus {
+          background: darken($blue, 10%);
+          border-color: darken($blue, 10%);
+        }
+      }
+      &.po-level-danger {
+        background: $red;
+        border-color: $red;
+        color: white;
+        &:hover,
+        &:focus {
+          background: darken($red, 10%);
+          border-color: darken($red, 10%);
+        }
       }
     }
-    &.po-level-danger {
-      background: $red;
-      border-color: $red;
-      color: white;
-      &:hover,
-      &:focus {
-        background: darken($red, 10%);
-        border-color: darken($red, 10%);
+    &.po-theme-link {
+      &.po-level-danger {
+        color: $red;
+        &:hover,
+        &:focus {
+          color: darken($red, 10%);
+        }
+      }
+    }
+    &.po-theme-text {
+      &.po-level-main {
+        color: $blue;
+        &:hover,
+        &:focus {
+          color: darken($blue, 10%);
+        }
+      }
+      &.po-level-danger {
+        color: $red;
+        &:hover,
+        &:focus {
+          color: darken($red, 10%);
+        }
       }
     }
   }
-  &.po-theme-link {
-    &.po-level-danger {
-      color: $red;
-      &:hover,
-      &:focus {
-        color: darken($red, 10%);
-      }
-    }
-  }
-  &.po-theme-text {
-    &.po-level-main {
-      color: $blue;
-      &:hover,
-      &:focus {
-        color: darken($blue, 10%);
-      }
-    }
-    &.po-level-danger {
-      color: $red;
-      &:hover,
-      &:focus {
-        color: darken($red, 10%);
-      }
-    }
-  }
+  &:disabled {
+    color: #c0c4cc;
+    cursor: not-allowed;
   }
 }
-
 </style>

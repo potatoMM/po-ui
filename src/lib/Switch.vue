@@ -21,10 +21,6 @@ export default {
       type:String,
       required: false
     },
-    diasbled:{
-      type:Boolean,
-      required: false
-    }
   },
   
   setup(props, context) {
