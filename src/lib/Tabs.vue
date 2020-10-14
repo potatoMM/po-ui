@@ -48,7 +48,7 @@ export default {
     // 只在第一次渲染执行
     onMounted(changeIndicator)
     onUpdated(changeIndicator)
-    
+    // 检查子组件的类型
     const defaults = context.slots.default();
     defaults.forEach((tag) => {
       if (tag.type !== Tab) {
