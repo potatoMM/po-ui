@@ -4,7 +4,7 @@ import Home from "./views/Home.vue";
 import Doc from "./views/Doc.vue";
 import Switch from "./components/switchPage.vue";
 import Button from "./components/ButtonPage.vue";
-import Dialog from "./components/Dialog.vue";
+import Dialog from "./components/DialogPage.vue";
 import Tabs from "./components//tabs.vue";
 
 import { h } from "vue";

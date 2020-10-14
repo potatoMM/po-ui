@@ -68,7 +68,7 @@ export default {
       text-align: center;
     }
     flex-shrink: 0;
-    z-index: 100;
+    z-index: 28;
   }
   > main {
     flex-grow: 1;
