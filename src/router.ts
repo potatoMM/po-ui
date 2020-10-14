@@ -5,7 +5,7 @@ import Doc from "./views/Doc.vue";
 import Switch from "./components/switchPage.vue";
 import Button from "./components/ButtonPage.vue";
 import Dialog from "./components/DialogPage.vue";
-import Tabs from "./components//tabs.vue";
+import Tabs from "./components/TabsPage.vue";
 
 import { h } from "vue";
 import Markdown from "./components/Markdown.vue";

@@ -7,8 +7,8 @@
   </div>
 </template>
 <script lang="ts">
-import ToggleDemo from '../components/dialog/BaseDialog.vue'
-import showDemo from '../components/dialog/SimpleDialog.vue'
+import ToggleDemo from '../components/dialogs/BaseDialog.vue'
+import showDemo from '../components/dialogs/SimpleDialog.vue'
 import Demo from '../components/Demo.vue'
 export default {
   components:{Demo},
